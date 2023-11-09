@@ -3,8 +3,12 @@
 This directory contains the SUGAR dataset in the JSON format.
 
 - `all.json`: A file containing all examples
-- `v4.1/cv5/`: A directory containing the training, validation, and test splits for the 5-fold cross validation used in the main experiments.
+- `v4.1.1/cv5/`: A directory containing the training, validation, and test splits for the 5-fold cross validation used in the main experiments.
 
+
+## Change Log
+
+- 2023/11/09: Renamed field names (`v4.1.1`)
 
 ## Example
 
@@ -101,7 +105,7 @@ This directory contains the SUGAR dataset in the JSON format.
     9,
     1
   ],
-  "s.dist.sents.indices": [  # index of the distractors in s.sents/s.sents.tok
+  "s.all.sents.indices": [  # index of all situation statements in s.sents/s.sents.tok (index of distractors can be obtained from this - "s.gold.sents.indices")
     0,
     1,
     2,
@@ -202,7 +206,7 @@ This directory contains the SUGAR dataset in the JSON format.
     16,
     2
   ],
-  "s.expanded.dist.sents.indices": [  # index of the original distractors in s.expand.sents/s.expand.sents.tok
+  "s.expanded.all.sents.indices": [  # index of all situation statements in s.expand.sents/s.expand.sents.tok (index of distractors can be obtained by this - "s.expanded.gold.sents.indices")
     0,
     2,
     3,
@@ -254,3 +258,10 @@ This directory contains the SUGAR dataset in the JSON format.
   ]
 }
 ```
+
+**Note on situation statements**
+
+There are two sets of situational statements:
+- **Set 1:** `s.sents`/`s.sents.tok`: situational statements used in the main experiments.
+- **Set 2:** `s.expanded.sents`/`s.expanded.sents.tok`: situational statements used in the controlled experiments (with 5, 10, and 15 distractors).
+- `s.all.sents.indices` and `s.expanded.all.sents.indices` point to the same set of situational statements (including the original distractors in Set 1).
